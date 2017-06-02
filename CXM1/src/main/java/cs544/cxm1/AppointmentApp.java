@@ -19,7 +19,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  * @author Ayu
  */
 public class AppointmentApp {
-     private static SessionFactory sessionFactory;
+
+    private static SessionFactory sessionFactory;
 
     /* Reads hibernate.cfg.xml and prepares Hibernate for use     */
     protected static void setUp() throws Exception {
@@ -45,20 +46,17 @@ public class AppointmentApp {
         setUp();
 
         try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();                 
+            session.beginTransaction();
 
-Doctor doctor = new Doctor("Family", "Michael", "Z");
-Patient patient = new Patient("Ayalew","100 Maharishi Street ", "1000", "New York");
-
-
+            Doctor doctor = new Doctor("Family", "Michael", "Z");
+            Patient patient = new Patient("Ayalew", "100 Maharishi Street ", "1000", "New York");
+            Appointment appointment = new Appointment();
+        
             
-            
-            
- 
 
             session.persist(doctor);
             session.persist(patient);
-           // session.persist(emp2);
+            // session.persist(emp2);
             session.getTransaction().commit();
         }
 

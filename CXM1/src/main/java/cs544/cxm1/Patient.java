@@ -14,8 +14,14 @@ import javax.persistence.Id;
  * @author Ayu
  */
 @Entity
+        @SecondaryTable
+
+{
+SecondaryTable{name = "Patient", pkJoinColumns = }
+} 
 class Patient {
-    @Id 
+
+    @Id
     @GeneratedValue
     private int id;
     private String name;
@@ -33,7 +39,6 @@ class Patient {
         this.city = city;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -65,6 +70,5 @@ class Patient {
     public void setCity(String city) {
         this.city = city;
     }
-    
-    
+
 }

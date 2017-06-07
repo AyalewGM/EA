@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 ">
     <bean id = "productService" class = "cs544.sdi2.ProductService">
-        <property name = "inventoryService" ref = "inventoryService "/>
+        <property name = "inventoryService" ref = "inventoryService"/>
     </bean>
-    <bean id = "inventoryService" class="InventoryService"/>
+    <bean id = "inventoryService" class="cs544.sdi2.InventoryServices"/>
 </beans>

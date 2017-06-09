@@ -5,14 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 ">
     <bean id = "accountService" class = "cs544.bank.service.AccountService">
-        <property name = "accountDAO" ref = "accountDAO" />
-        <property name = "currencyConverter" ref = "currencyConverter" />
-        <property name = "jmsSender" ref = "jmsSender" />
-        <property name = "logger" ref = "logger" />
+        <constructor-arg ref = "accountDAO" />
+         
     </bean>
     <bean id = "accountDAO" class="cs544.bank.dao.AccountDAO"/>
-     <bean id = "currencyConverter" class="cs544.bank.service.CurrencyConverter "/>
-     <bean id = "jmsSender" class="cs544.bank.jms.JMSSender"/>
-     <bean id = "logger" class="cs544.bank.logging.Logger"/>
-      
+            
 </beans>

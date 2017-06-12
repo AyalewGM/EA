@@ -1,13 +1,9 @@
-package cs544.exercise16_1.bank.dao;
+package cs544.bank.dao;
 
 import java.util.*;
 
-import cs544.exercise16_1.bank.domain.Account;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import cs544.bank.domain.Account;
 
-
-@Transactional(propagation=Propagation.REQUIRED)
 public class AccountDAO implements IAccountDAO {
 	Collection<Account> accountlist = new ArrayList<Account>();
 

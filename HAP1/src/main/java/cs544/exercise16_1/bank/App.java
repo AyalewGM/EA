@@ -7,13 +7,22 @@ import cs544.exercise16_1.bank.domain.AccountEntry;
 import cs544.exercise16_1.bank.domain.Customer;
 import cs544.exercise16_1.bank.service.AccountService;
 import cs544.exercise16_1.bank.service.IAccountService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class App {
 	public static void main(String[] args) {
-		IAccountService accountService = new AccountService();
+		//IAccountService accountService = new AccountService();
 		// create 2 accounts;
-		accountService.createAccount(1263862, "Frank Brown");
+		
+            ApplicationContext context = new ClassPathXmlApplicationContext("springconfig.xml");
+            IAccountService accountService= context.getBean("accountService", AccountService.class);
+            
+            
+            
+            
+            accountService.createAccount(1263862, "Frank Brown");
 		accountService.createAccount(4253892, "John Doe");
 		//use account 1;
 		accountService.deposit(1263862, 240);

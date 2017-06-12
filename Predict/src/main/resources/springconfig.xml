@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    <bean id="a" class="cs544.A" lazy-init="true">
+        <constructor-arg ref="b" />
+        <constructor-arg ref="d" />
+    </bean>
+    <bean id="b" class="cs544.B" init-method="init" destroy-method="destroy">
+        <property name="items">
+            <list>
+                <bean class="cs544.D">
+                    <property name="text" value="else" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="c" class="cs544.C" abstract="true" >
+        <property name="text" value="something" />
+    </bean>
+    <bean id="d" class="cs544.D" parent="c" scope="prototype" destroy-method="destroy" />
+</beans>

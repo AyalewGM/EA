@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:sec="http://www.springframework.org/schema/security" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans-3.0.xsd 
+       http://www.springframework.org/schema/security   
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd  
+">
+<sec:http>
+    <sec:url-intercept pattern="carList.jsp" acess="ROLE_USER"/>
+        
+    </sec:url-intercept>
+        
+</sec:http>
+
+<sec:authentication-manager>
+    <sec:authentication-provider>
+      <sec:user-service>
+        <sec:user name="ayu" password="ayupassword" authorities="ROLE_USER, ROLE_ADMIN" />
+        <sec:user name="micheal" password="michealpassword" authorities="ROLE_USER" />
+      </sec:user-service>
+    </sec:authentication-provider>
+  </sec:authentication-manager>
+  
+   <http auto-config='true'>
+    <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+    <intercept-url pattern="/**" access="ROLE_USER" />
+    <form-login login-page='/login.jsp'/>
+  </http>
+  
+   <http auto-config='true'>
+    <intercept-url pattern="/carDetail.jsp*" access="IS_AUTHENTICATED_ADMIN"/>
+    <intercept-url pattern="/**" access="ROLE_ADMIN" />
+    
+  </http>
+  
+</beans>

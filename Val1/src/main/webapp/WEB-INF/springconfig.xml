@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security" 
+    xmlns:beans="http://www.springframework.org/schema/beans"
+ 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans-3.0.xsd 
+       http://www.springframework.org/schema/security   
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd  
+">
+    <http pattern=/ndex.jsp" security="none"/>
+<http>
+    < url-intercept pattern="/login.jsp" acess="IS_AUTHENTICATED_ANONYMOUSLY"/>
+      < url-intercept pattern="/Loginfailed" acess="IS_AUTHENTICATED_ANONYMOUSLY"/>   
+      
+     < url-intercept pattern="/*" acess="ROLE_USER"/>
+     < url-intercept pattern="/*" acess="ROLE_ADMIN"/>
+        
+</ http>
+
+<form-login login-page= "/login.jsp" authentication-failure-url="/cars"
+default-target-url="/cars"/>
+<logout logout-success-url="login.jsp"
+<authentication-manager>
+    <authentication-provider>
+      <user-service>
+        < user name="ayu" password="ayupassword" authorities="ROLE_USER, ROLE_ADMIN" />
+        < user name="micheal" password="michealpassword" authorities="ROLE_USER" />
+      </user-service>
+    </authentication-provider>
+  </authentication-manager>
+  
+   
+  
+   <http auto-config='true'>
+    <intercept-url pattern="/carDetail.jsp*" access="IS_AUTHENTICATED_ADMIN"/>
+    <intercept-url pattern="/**" access="ROLE_ADMIN" />
+    
+  </http>
+  
+</beans>
